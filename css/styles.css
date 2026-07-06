@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f3f5f7;
+  color: #222;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #c40000;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-ccoo {
+  background: #d71920;
+  color: white;
+}
+
+.btn-ugt {
+  background: #00843d;
+  color: white;
+}
+
+.btn-blanco {
+  background: #bdbdbd;
+  color: black;
+}
+
+.btn-nulo {
+  background: #222;
+  color: white;
+}
+
+.btn-principal {
+  background: #0066cc;
+  color: white;
+}
+
+.total {
+  text-align: center;
+  font-size: 44px;
+  font-weight: bold;
+  margin: 25px 0;
+}
+
+.resumen {
+  font-size: 22px;
+  margin-top: 20px;
+}
+
+.oculto {
+  display: none;
+}
