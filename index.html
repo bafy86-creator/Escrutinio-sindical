@@ -3,130 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escrutinio Sindical</title>
+<title>Escrutinio Sindical 2.0</title>
 
-<style>
-body{
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-text-align:center;
-margin:0;
-padding:20px;
-}
-
-h1{
-color:#003366;
-}
-
-.contador{
-font-size:50px;
-font-weight:bold;
-margin:15px;
-}
-
-button{
-width:90%;
-max-width:350px;
-padding:18px;
-margin:10px;
-font-size:24px;
-border:none;
-border-radius:12px;
-color:white;
-}
-
-.ccoo{background:#d60000;}
-.ugt{background:#009933;}
-.blanco{background:#666;}
-.nulo{background:#111;}
-.reset{background:#0066cc;}
-
-.total{
-font-size:28px;
-margin-top:20px;
-font-weight:bold;
-}
-</style>
+<link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
 
+<div class="container">
+
+<div id="inicio" class="card">
+
 <h1>ESCRUTINIO SINDICAL</h1>
 
-<div class="contador" id="total">0</div>
+<label>Empresa</label>
+<input
+id="empresa"
+type="text"
+placeholder="Nombre de la empresa">
 
-<button class="ccoo" onclick="sumar('ccoo')">
-CCOO (<span id="ccoo">0</span>)
+<label>Centro de trabajo</label>
+<input
+id="centro"
+type="text"
+placeholder="Centro de trabajo">
+
+<label>Mesa electoral</label>
+<input
+id="mesa"
+type="text"
+placeholder="Mesa">
+
+<label>Papeletas esperadas</label>
+<input
+id="esperadas"
+type="number"
+placeholder="0">
+
+<button
+class="btn-principal"
+onclick="comenzar()">
+
+COMENZAR ESCRUTINIO
+
 </button>
 
-<button class="ugt" onclick="sumar('ugt')">
-UGT (<span id="ugt">0</span>)
+</div>
+
+<div
+id="escrutinio"
+class="card oculto">
+
+<h2>Recuento</h2>
+
+<div class="total" id="total">
+0
+</div>
+
+<button class="btn-ccoo"
+onclick="sumar('ccoo')">
+
+🔴 CCOO
+(<span id="votosCCOO">0</span>)
+
 </button>
 
-<button class="blanco" onclick="sumar('blanco')">
-BLANCO (<span id="blanco">0</span>)
+<button class="btn-ugt"
+onclick="sumar('ugt')">
+
+🟢 UGT
+(<span id="votosUGT">0</span>)
+
 </button>
 
-<button class="nulo" onclick="sumar('nulo')">
-NULO (<span id="nulo">0</span>)
+<button class="btn-blanco"
+onclick="sumar('blanco')">
+
+⚪ Blancos
+(<span id="votosBlanco">0</span>)
+
 </button>
 
-<button class="reset" onclick="reiniciar()">
-REINICIAR
+<button class="btn-nulo"
+onclick="sumar('nulo')">
+
+⚫ Nulos
+(<span id="votosNulo">0</span>)
+
 </button>
 
-<script>
+<div class="resumen">
 
-let votos={
-ccoo:0,
-ugt:0,
-blanco:0,
-nulo:0
-};
+<strong>Papeletas esperadas:</strong>
 
-function actualizar(){
+<span id="txtEsperadas">0</span>
 
-document.getElementById("ccoo").innerHTML=votos.ccoo;
-document.getElementById("ugt").innerHTML=votos.ugt;
-document.getElementById("blanco").innerHTML=votos.blanco;
-document.getElementById("nulo").innerHTML=votos.nulo;
+<br><br>
 
-document.getElementById("total").innerHTML=
-votos.ccoo+votos.ugt+votos.blanco+votos.nulo;
+<strong>Pendientes:</strong>
 
-localStorage.setItem("votos",JSON.stringify(votos));
+<span id="pendientes">0</span>
 
-}
+</div>
 
-function sumar(tipo){
-votos[tipo]++;
-actualizar();
-}
+<button
+class="btn-principal"
+onclick="deshacer()">
 
-function reiniciar(){
+↩️ DESHACER
 
-if(confirm("¿Reiniciar escrutinio?")){
-votos={
-ccoo:0,
-ugt:0,
-blanco:0,
-nulo:0
-};
-actualizar();
-}
+</button>
 
-}
+<button
+class="btn-principal"
+onclick="finalizar()">
 
-let guardado=localStorage.getItem("votos");
+✅ FINALIZAR
 
-if(guardado){
-votos=JSON.parse(guardado);
-}
+</button>
 
-actualizar();
+</div>
 
-</script>
+<div
+id="resultado"
+class="card oculto">
+
+<h2>Resultado del escrutinio</h2>
+
+<div id="resultadoTexto">
+
+</div>
+
+<button
+class="btn-principal"
+onclick="nuevoEscrutinio()">
+
+NUEVO ESCRUTINIO
+
+</button>
+
+</div>
+
+</div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
