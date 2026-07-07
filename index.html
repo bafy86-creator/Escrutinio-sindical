@@ -1,92 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Escrutinio Sindical</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escrutinio Sindical</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app">
-    <section id="inicio" class="screen active">
-      <div class="card">
-        <p class="eyebrow">Mesa electoral</p>
-        <h1>Escrutinio Sindical</h1>
+<main class="app">
+<section id="inicio" class="screen active">
+<div class="card">
+<p class="eyebrow">Mesa electoral</p>
+<h1>Escrutinio Sindical</h1>
+<label>Empresa</label><input id="empresa" type="text" placeholder="Nombre de la empresa">
+<label>Centro de trabajo</label><input id="centro" type="text" placeholder="Centro de trabajo">
+<label>Mesa electoral</label><input id="mesa" type="text" placeholder="Mesa">
+<label>Papeletas esperadas</label><input id="esperadas" type="number" min="1" placeholder="0">
+<label>Delegados a elegir</label><input id="delegados" type="number" min="1" placeholder="Ej. 5">
+<button class="primary" id="btnComenzar">Comenzar escrutinio</button>
+<button class="ghost" id="btnRecuperar">Recuperar último recuento</button>
+</div>
+</section>
 
-        <label>Empresa</label>
-        <input id="empresa" type="text" placeholder="Nombre de la empresa" />
+<section id="recuento" class="screen">
+<header class="topbar"><div><p class="eyebrow">Recuento</p><h2 id="tituloMesa">Escrutinio</h2></div><button class="mini" id="btnEditar">Editar</button></header>
+<div class="stats"><div><span>Total</span><strong id="total">0</strong></div><div><span>Pendientes</span><strong id="pendientes">0</strong></div></div>
+<div class="big-buttons">
+<button class="vote ccoo" data-voto="ccoo"><span>CCOO</span><strong id="votosCCOO">0</strong><small>+1 voto</small></button>
+<button class="vote ugt" data-voto="ugt"><span>UGT</span><strong id="votosUGT">0</strong><small>+1 voto</small></button>
+</div>
+<div class="small-buttons">
+<button class="secondary blanco" data-voto="blanco">Blanco <strong id="votosBlanco">0</strong></button>
+<button class="secondary nulo" data-voto="nulo">Nulo <strong id="votosNulo">0</strong></button>
+</div>
+<div class="progress-wrap"><div class="progress-info"><span id="contadasTxt">0 contadas</span><span id="esperadasTxt">0 esperadas</span></div><div class="progress"><div id="barra"></div></div></div>
+<div class="actions"><button class="ghost" id="btnDeshacer">↩ Deshacer</button><button class="primary" id="btnFinalizar">Finalizar</button></div>
+</section>
 
-        <label>Centro de trabajo</label>
-        <input id="centro" type="text" placeholder="Centro de trabajo" />
-
-        <label>Mesa electoral</label>
-        <input id="mesa" type="text" placeholder="Mesa" />
-
-        <label>Papeletas esperadas</label>
-        <input id="esperadas" type="number" min="1" inputmode="numeric" placeholder="0" />
-
-        <button class="primary" id="btnComenzar">Comenzar escrutinio</button>
-        <button class="ghost" id="btnRecuperar">Recuperar último recuento</button>
-      </div>
-    </section>
-
-    <section id="recuento" class="screen">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Recuento</p>
-          <h2 id="tituloMesa">Escrutinio</h2>
-        </div>
-        <button class="mini" id="btnEditar">Editar</button>
-      </header>
-
-      <div class="stats">
-        <div><span>Total</span><strong id="total">0</strong></div>
-        <div><span>Pendientes</span><strong id="pendientes">0</strong></div>
-      </div>
-
-      <div class="big-buttons">
-        <button class="vote ccoo" data-voto="ccoo">
-          <span>CCOO</span>
-          <strong id="votosCCOO">0</strong>
-          <small>+1 voto</small>
-        </button>
-
-        <button class="vote ugt" data-voto="ugt">
-          <span>UGT</span>
-          <strong id="votosUGT">0</strong>
-          <small>+1 voto</small>
-        </button>
-      </div>
-
-      <div class="small-buttons">
-        <button class="secondary blanco" data-voto="blanco">Blanco <strong id="votosBlanco">0</strong></button>
-        <button class="secondary nulo" data-voto="nulo">Nulo <strong id="votosNulo">0</strong></button>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-info">
-          <span id="contadasTxt">0 contadas</span>
-          <span id="esperadasTxt">0 esperadas</span>
-        </div>
-        <div class="progress"><div id="barra"></div></div>
-      </div>
-
-      <div class="actions">
-        <button class="ghost" id="btnDeshacer">↩ Deshacer</button>
-        <button class="primary" id="btnFinalizar">Finalizar</button>
-      </div>
-    </section>
-
-    <section id="resultado" class="screen">
-      <div class="card">
-        <p class="eyebrow">Resultado final</p>
-        <h1>Acta de recuento</h1>
-        <div id="resumenFinal" class="summary"></div>
-        <button class="primary" id="btnCompartir">Copiar resumen</button>
-        <button class="ghost" id="btnNuevo">Nuevo escrutinio</button>
-      </div>
-    </section>
-  </main>
-
-  <script src="app.js"></script></body>
+<section id="resultado" class="screen">
+<div class="card"><p class="eyebrow">Resultado final</p><h1>Acta de recuento</h1><div id="resumenFinal" class="summary"></div><button class="primary" id="btnCompartir">Copiar resumen</button><button class="ghost" id="btnNuevo">Nuevo escrutinio</button></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
 </html>
